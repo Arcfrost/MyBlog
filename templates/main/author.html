@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1 class='center'><p class='#ef9a9a red-text lighten-3'>Author Details</p></h1>
+
+    <div class='container'>
+        <h4 class='#b71c1c red-text darken-4'>{{ author.name }}</h4>
+    <blockquote>Articles Written:</blockquote>
+
+    <div class="collection">
+        {% for article in latest_posts %}
+
+        
+        <a href="{% url 'get_article' article.pk %}" class="collection-item">
+                {{article}} 
+            </a>
+        
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    
+{% endblock %}

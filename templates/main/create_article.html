@@ -1,0 +1,74 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <h1 class='center'><p class='#ef9a9a red-text lighten-3'>Create Yor Own Article!</p></h1>
+
+        
+    
+
+    <div class='container '>
+        {% if success %}
+            <blockquote>
+                <p>Form Submitted Succesfully</p>
+            </blockquote>
+            
+        {% endif %}
+    
+        
+
+        <form method='POST'>
+        {% csrf_token %}
+
+        <div class="input-field col s6 ">
+          {% comment %} <input placeholder="Placeholder" id="first_name" type="text" class="validate"> {% endcomment %}
+          <input type="text"  name='title' >
+          <label for="title">Title</label>
+        </div>
+        {% comment %} <input type="text" name='title' placeholder='Title'> {% endcomment %}
+        
+        <div class="input-field col s12">
+          {% comment %} <textarea id="textarea1" class="materialize-textarea"></textarea> {% endcomment %}
+          <textarea name="content" class="flow-text materialize-textarea" height=200></textarea>
+          <label for="textarea1">Content</label>
+        </div>
+
+        <label>Authors</label>
+        <div class="input-field col s12">
+            
+            <select class='browser-default' name="author">
+                
+                {% comment %} <option value="" disabled selected>Choose your option</option> {% endcomment %}
+                {% for author in authors %}
+                <option value=" {{author.pk}} "> {{author}} </option>
+                {% endfor %}
+            </select>
+            
+        </div>
+
+
+        
+        <div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+            </button>
+        
+            <button class="waves-effect waves-light btn" type='reset'>Reset</button>
+        </div>
+        
+
+    
+    </form>
+
+    
+    </div>
+    
+    <script>
+    
+            document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+    });
+
+    </script>
+{% endblock %}

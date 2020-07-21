@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    <h1 class='center'><p class='#ef9a9a red-text lighten-3'>{{ article.title }}</p></h1>
+    
+    <div class='container'>
+        <p class='flow-text'>
+        {{ article.content }}
+    </p>
+    <blockquote> Created At: {{ article.createdAt }} </blockquote>
+    <h5>Written By: 
+        {% comment %} We dont call a function in templating language it is called itself {% endcomment %}
+        {% for author in article.authors.all %} 
+            <a href=" {% url 'get_author' author.pk %} ">{{ author }} </a>
+            
+        {% endfor %}
+    </h5>
+    </div>
+
+{% endblock %}
