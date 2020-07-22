@@ -8,12 +8,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     {% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> {% endcomment %}
-
+    
+    {% block style %} {% endblock %}
 
     <title>Amay's blog</title>
 </head>
-<body>
-
+<body >
+<main >
     {% include 'main/navbar.html' %}
 
     {% block content %} {% endblock %}
@@ -23,7 +24,9 @@
 
     
     {% block script %}{% endblock %}
-    
-    
+</main>
+    {% include 'main/footer.html' %}
+
 </body>
+
 </html>

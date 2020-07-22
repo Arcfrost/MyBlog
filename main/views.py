@@ -76,3 +76,32 @@ def create_article(request):
     
 
     return render(request,'main/create_article.html',context)
+
+def authors(request):
+    
+    authors=models.Author.objects.all()
+    
+    context={
+        'authors':authors
+    }
+
+
+    return render(request,'main/authors.html',context)
+
+def apply(request):
+
+    context={}
+
+    if request.method=="POST":
+        author_data={
+            "name":request.POST['name'],
+        }
+        author = models.Author.objects.create(**author_data)
+
+        # author = models.Author.objects.get(pk=request.POST['author'])
+        # article.authors.set([author])
+
+        
+        context["applied"]=True
+
+    return render(request,'main/apply.html',context)

@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    <h1 class='center'><p class='#ef9a9a red-text lighten-3'>Authors</p></h1>
+
+    <div class="container collection ">
+        {% for author in authors %}
+
+        
+        <a href="{% url 'get_author' author.pk %} " class="collection-item">
+                {{author}} 
+            </a>
+        
+        {% endfor %}
+
+    </div>
+{% endblock %}
